@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "SARC-Tool: Stability-guided Adaptive Ranking Configuration"
+version: 1.0.0
+date-released: 2026-11-08
+license: MIT
+repository-code: "https://github.com/andersonportella-collab/SARC-Tool"
+authors:
+  - family-names: Portella
+    given-names: Anderson Gonçalves
+    affiliation: Universidade Federal Fluminense
+    orcid: "https://orcid.org/0000-0001-6520-4301"
+  - family-names: Gomes
+    given-names: Carlos Francisco Simões
+    affiliation: Universidade Federal Fluminense
+    orcid: "https://orcid.org/0000-0002-6865-0275"
+  - family-names: Santos
+    given-names: Marcos dos
+    affiliation: Escola de Guerra Naval
+    orcid: "https://orcid.org/0000-0003-1533-5535"
+notes: "INPI registration: [BR XXXXXXXX-X]"
+# After the article is published, add a preferred-citation block here.
