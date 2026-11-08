@@ -85,7 +85,8 @@ dados, data e hora) e ZIP com tabelas, figuras e relatório.
 
 ### 4.6 Interpretação por IA (opcional)
 
-Desligada por padrão. Ao digitar uma chave da API Anthropic na barra lateral, surge a aba de interpretação.
+Desligada por padrão. Na barra lateral, escolha o provedor, Anthropic (Claude) ou OpenAI (ChatGPT), e digite a
+chave; surge a aba de interpretação. Modelos padrão: claude-sonnet-5-5 e gpt-4o-mini, ambos editáveis.
 Somente o resumo dos resultados é enviado; a matriz só vai se você marcar o consentimento. A chave não é gravada.
 Respostas de IA podem conter erros.
 

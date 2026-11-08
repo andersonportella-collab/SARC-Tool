@@ -11,7 +11,7 @@ ui.inject_style()
 
 lang = "pt" if st.sidebar.selectbox("Idioma / Language", ["Português", "English"], key="lang") == "Português" else "en"
 params = tabs.sidebar_params(lang)
-api_key, model = tabs.sidebar_llm(lang)
+api_key, model, provider = tabs.sidebar_llm(lang)
 ui.sidebar_footer(lang)
 
 ui.header(lang)
@@ -35,6 +35,6 @@ with tb["tab_export"]:
     tabs.export_tab(lang, setup)
 if api_key:
     with tb["tab_ai"]:
-        tabs.ai_tab(lang, setup, api_key, model)
+        tabs.ai_tab(lang, setup, api_key, model, provider)
 with tb["tab_about"]:
     ui.about(lang)

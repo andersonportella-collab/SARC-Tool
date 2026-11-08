@@ -38,8 +38,8 @@ Online app: *URL available after deployment on Streamlit Community Cloud.*
    normalized profiles, method correlation heat map.
 7. **Export**: CSV, XLSX (all tables), JSON reproducibility report (parameters, library versions, SHA-256 data
    hash, timestamp) and a ZIP with everything.
-8. **Optional AI interpretation**: off by default. It turns on only when the user types an Anthropic API key in
-   the sidebar. Only the result summary is sent; the decision matrix is sent only with explicit consent.
+8. **Optional AI interpretation**: off by default. It turns on only when the user picks a provider, Anthropic
+   (Claude) or OpenAI (ChatGPT), and types the API key in the sidebar. Only the result summary is sent; the decision matrix is sent only with explicit consent.
 
 ## Limitations (also shown in the app)
 

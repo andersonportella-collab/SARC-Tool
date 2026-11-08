@@ -84,7 +84,8 @@ timestamp) and a ZIP with tables, figures and report.
 
 ### 4.6 AI interpretation (optional)
 
-Off by default. Typing an Anthropic API key in the sidebar shows the interpretation tab. Only the result summary
+Off by default. In the sidebar, choose the provider, Anthropic (Claude) or OpenAI (ChatGPT), and type the key;
+the interpretation tab appears. Default models: claude-sonnet-5-5 and gpt-4o-mini, both editable. Only the result summary
 is sent; the matrix is sent only if you tick the consent box. The key is not stored. AI answers may contain errors.
 
 ## 5. Step by step example

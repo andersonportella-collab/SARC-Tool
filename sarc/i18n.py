@@ -1,4 +1,4 @@
-"""Bilingual interface strings (PT/EN). Interface text uses no em dashes."""
+﻿"""Bilingual interface strings (PT/EN). Interface text uses no em dashes."""
 
 T = {
     # header and navigation
@@ -25,7 +25,10 @@ T = {
     "vikor_v": {"pt": "VIKOR v", "en": "VIKOR v"},
     "reset": {"pt": "Restaurar padrões", "en": "Restore defaults"},
     "llm_exp": {"pt": "Interpretação por IA (opcional)", "en": "AI interpretation (optional)"},
-    "llm_key": {"pt": "Chave da API Anthropic", "en": "Anthropic API key"},
+    "llm_provider": {"pt": "Provedor", "en": "Provider"},
+    "llm_key_anthropic": {"pt": "Chave da API Anthropic", "en": "Anthropic API key"},
+    "llm_key_openai": {"pt": "Chave da API OpenAI", "en": "OpenAI API key"},
+    "ai_provider_now": {"pt": "Provedor: {p}. Modelo: {m}.", "en": "Provider: {p}. Model: {m}."},
     "llm_key_help": {"pt": "A chave fica apenas nesta sessão e não é gravada. Sem chave, o recurso fica desligado.",
                      "en": "The key stays only in this session and is not stored. Without a key, the feature is off."},
     "llm_model": {"pt": "Modelo", "en": "Model"},
@@ -185,8 +188,8 @@ T = {
     "exp_note": {"pt": "O relatório registra parâmetros, versões das bibliotecas, hash SHA-256 dos dados, data e hora.",
                  "en": "The report records parameters, library versions, SHA-256 data hash, date and time."},
     # AI tab
-    "ai_off": {"pt": "Informe sua chave da API Anthropic na barra lateral para ativar este recurso.",
-               "en": "Enter your Anthropic API key in the sidebar to enable this feature."},
+    "ai_off": {"pt": "Escolha o provedor (Anthropic ou OpenAI) e informe sua chave na barra lateral para ativar este recurso.",
+               "en": "Choose the provider (Anthropic or OpenAI) and enter your key in the sidebar to enable this feature."},
     "ai_scope": {"pt": "Por padrão, apenas o resumo dos resultados é enviado. A matriz de decisão só é enviada se você marcar a opção abaixo.",
                  "en": "By default, only the result summary is sent. The decision matrix is sent only if you tick the option below."},
     "ai_consent": {"pt": "Autorizo enviar a matriz de decisão ao provedor do modelo", "en": "I authorize sending the decision matrix to the model provider"},

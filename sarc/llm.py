@@ -1,9 +1,12 @@
-"""Optional interpretation of results by an LLM (Anthropic API). Disabled unless the user types an API
-key. By default only the result summary is sent; the decision matrix is sent only with explicit consent.
-No Streamlit imports."""
+"""Optional interpretation of results by an LLM (Anthropic Claude or OpenAI ChatGPT). Disabled unless the
+user types an API key. By default only the result summary is sent; the decision matrix is sent only with
+explicit consent. No Streamlit imports."""
 import json
 
-DEFAULT_MODEL = "claude-sonnet-5-5"
+PROVIDERS = ("anthropic", "openai")
+PROVIDER_LABELS = {"anthropic": "Anthropic (Claude)", "openai": "OpenAI (ChatGPT)"}
+DEFAULT_MODELS = {"anthropic": "claude-sonnet-5-5", "openai": "gpt-4o-mini"}
+DEFAULT_MODEL = DEFAULT_MODELS["anthropic"]
 # models that accept the server-side refusal fallback in "default" mode
 _FALLBACK_MODELS = {"claude-sonnet-5-5", "claude-opus-5-5", "claude-opus-5", "claude-fable-5-1"}
 
@@ -31,8 +34,41 @@ def build_context(summary, matrix_csv=None):
     return ctx
 
 
-def ask(api_key, question, context, history=None, lang="pt", model=DEFAULT_MODEL, max_tokens=4000):
+def ask(api_key, question, context, history=None, lang="pt", model=None, max_tokens=4000, provider="anthropic"):
     """Returns (answer_text, error_message). history: list of {"role", "content"} (last 20 kept)."""
+    model = model or DEFAULT_MODELS[provider]
+    if provider == "openai":
+        return _ask_openai(api_key, question, context, history, lang, model, max_tokens)
+    return _ask_anthropic(api_key, question, context, history, lang, model, max_tokens)
+
+
+def _ask_openai(api_key, question, context, history, lang, model, max_tokens):
+    try:
+        import openai
+    except ImportError:
+        return None, "openai package not installed"
+    client = openai.OpenAI(api_key=api_key)
+    msgs = [{"role": "system", "content": SYSTEM[lang]}] + list(history or [])[-20:]
+    msgs.append({"role": "user", "content": f"{context}\n\nQUESTION:\n{question}"})
+    try:
+        resp = client.chat.completions.create(model=model, messages=msgs, max_completion_tokens=max_tokens)
+    except openai.AuthenticationError:
+        return None, "auth"
+    except openai.NotFoundError:
+        return None, "model"
+    except openai.RateLimitError:
+        return None, "rate"
+    except openai.APIStatusError as e:
+        return None, f"API {e.status_code}"
+    except openai.APIConnectionError:
+        return None, "connection"
+    choice = resp.choices[0]
+    if getattr(choice.message, "refusal", None):
+        return None, "refusal"
+    return choice.message.content or "", None
+
+
+def _ask_anthropic(api_key, question, context, history, lang, model, max_tokens):
     try:
         import anthropic
     except ImportError:

@@ -1,8 +1,9 @@
-streamlit>=1.38
+﻿streamlit>=1.38
 numpy>=1.26
 scipy>=1.11
 pandas>=2.1
 matplotlib>=3.8
 openpyxl>=3.1
 xlsxwriter>=3.1
-anthropic>=0.40   # optional AI interpretation; only used when the user types an API key
+anthropic>=0.40   # optional AI interpretation (Claude); only used when the user types an API key
+openai>=1.40      # optional AI interpretation (ChatGPT); only used when the user types an API key

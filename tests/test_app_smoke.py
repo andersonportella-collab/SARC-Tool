@@ -29,6 +29,16 @@ def test_ai_tab_only_with_key():
     at.run()
     labels = [tb.label for tb in at.tabs]
     assert "Interpretação por IA" not in labels
-    at.text_input(key="llm_key").input("test-key-not-real").run()
+    at.text_input(key="llm_key_anthropic").input("test-key-not-real").run()
+    assert not at.exception
+    assert "Interpretação por IA" in [tb.label for tb in at.tabs]
+
+
+def test_ai_tab_with_openai_provider():
+    at = AppTest.from_file(APP, default_timeout=120)
+    at.run()
+    at.radio(key="llm_provider").set_value("openai").run()
+    assert at.text_input(key="llm_model_openai").value == "gpt-4o-mini"
+    at.text_input(key="llm_key_openai").input("test-key-not-real").run()
     assert not at.exception
     assert "Interpretação por IA" in [tb.label for tb in at.tabs]

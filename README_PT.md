@@ -1,4 +1,4 @@
-# SARC-Tool
+﻿# SARC-Tool
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://python.org)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.38%2B-red)](https://streamlit.io)
@@ -38,8 +38,8 @@ Aplicativo online: *URL disponível após a implantação no Streamlit Community
    critérios, gráfico de teia dos perfis normalizados, mapa de calor da correlação entre métodos.
 7. **Exportação**: CSV, XLSX (todas as tabelas), relatório de reprodutibilidade em JSON (parâmetros, versões das
    bibliotecas, hash SHA-256 dos dados, data e hora) e ZIP com tudo.
-8. **Interpretação por IA (opcional)**: desligada por padrão. Só é ativada quando o usuário digita uma chave da
-   API Anthropic na barra lateral. Apenas o resumo dos resultados é enviado; a matriz só é enviada com
+8. **Interpretação por IA (opcional)**: desligada por padrão. Só é ativada quando o usuário escolhe o provedor, Anthropic (Claude) ou OpenAI (ChatGPT), e digita a chave da
+   API correspondente na barra lateral. Apenas o resumo dos resultados é enviado; a matriz só é enviada com
    consentimento explícito.
 
 ## Limites (também exibidos no app)

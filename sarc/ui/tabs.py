@@ -38,11 +38,13 @@ def sidebar_params(lang):
 
 def sidebar_llm(lang):
     with st.sidebar.expander(t("llm_exp", lang)):
-        key = st.text_input(t("llm_key", lang), type="password", help=t("llm_key_help", lang), key="llm_key")
-        model = st.text_input(t("llm_model", lang), value=llm.DEFAULT_MODEL, key="llm_model")
+        prov = st.radio(t("llm_provider", lang), llm.PROVIDERS, format_func=llm.PROVIDER_LABELS.get, key="llm_provider")
+        key = st.text_input(t("llm_key_" + prov, lang), type="password", help=t("llm_key_help", lang),
+                            key=f"llm_key_{prov}")
+        model = st.text_input(t("llm_model", lang), value=llm.DEFAULT_MODELS[prov], key=f"llm_model_{prov}")
         if key:
             st.success(t("llm_on", lang))
-    return (key or None), model
+    return (key or None), model, prov
 
 
 # ---------------------------------------------------------------- cache
@@ -443,13 +445,14 @@ def export_tab(lang, setup):
 
 
 # ---------------------------------------------------------------- AI tab
-def ai_tab(lang, setup, api_key, model):
+def ai_tab(lang, setup, api_key, model, provider="anthropic"):
     if not api_key:
         st.info(t("ai_off", lang))
         return
     res = _check(lang, setup)
     if res is None:
         return
+    st.caption(t("ai_provider_now", lang, p=llm.PROVIDER_LABELS[provider], m=model))
     st.caption(t("ai_scope", lang))
     consent = st.checkbox(t("ai_consent", lang), value=False, key="ai_consent")
     st.caption(t("ai_disclaimer", lang))
@@ -466,7 +469,7 @@ def ai_tab(lang, setup, api_key, model):
             mat = pd.DataFrame(s["X"], columns=s["criteria"], index=s["names"]).to_csv(sep=";")
         ctx = llm.build_context(summary(res), mat)
         with st.spinner("..."):
-            ans, err = llm.ask(api_key, q, ctx, hist, lang, model)
+            ans, err = llm.ask(api_key, q, ctx, hist, lang, model, provider=provider)
         if err:
             st.error(t("ai_err", lang, e=err))
         else:
