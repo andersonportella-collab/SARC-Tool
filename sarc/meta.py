@@ -6,7 +6,7 @@ APP_NAME = "SARC-Tool"
 YEAR = 2026
 VERSION = __version__
 REPO_URL = "https://github.com/andersonportella-collab/SARC-Tool"
-APP_URL = None                      # e.g. "https://sarc-tool.streamlit.app" after deployment
+APP_URL = "https://sarc-tool.streamlit.app/"                   
 SUPPORT_EMAIL = "andersonportella@yahoo.com.br"
 INPI = "[BR XXXXXXXX-X]"            # replace with the registration number
 
