@@ -23,14 +23,14 @@ INSTITUTIONS = {
 
 AUTHORS = [
     dict(name="Anderson Gonçalves Portella", inst="UFF", orcid="0000-0001-6520-4301"),
-    dict(name="Carlos Francisco Simões Gomes", inst="UFF", orcid="0000-0002-6865-0275"),
-    dict(name="Marcos dos Santos", inst="EGN", orcid="0000-0003-1533-5535"),
+    dict(name="Prof. Dr. Carlos Francisco Simões Gomes", inst="UFF", orcid="0000-0002-6865-0275"),
+    dict(name="Prof. Dr. Marcos dos Santos", inst="EGN", orcid="0000-0003-1533-5535"),
 ]
 
 
 def software_citation(lang):
-    t = {"pt": "SARC-Tool: configuração adaptativa de ranking guiada por estabilidade. Software, versão",
-         "en": "SARC-Tool: Stability-guided Adaptive Ranking Configuration. Software, version"}[lang]
+    t = {"pt": "SARC-Tool: Configuração Adaptativa de Ranking Guiada por Estabilidade. Software, versão",
+         "en": "SARC-Tool: Stability-Guided Adaptive Ranking Configuration. Software, version"}[lang]
     inst = "; ".join(INSTITUTIONS[k][lang] for k in ("UFF", "EGN"))
     abnt = (f"PORTELLA, A. G.; GOMES, C. F. S.; SANTOS, M. **{t} {VERSION}**. {inst}, {YEAR}. "
             f"Registro INPI: {INPI}. Disponível em: {REPO_URL}.")
