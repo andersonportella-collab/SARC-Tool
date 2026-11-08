@@ -13,7 +13,7 @@ Leia em português: [README_PT.md](README_PT.md)
 
 ## Access
 
-Online app: *URL available after deployment on Streamlit Community Cloud.*
+Online app: *https://sarc-tool.streamlit.app/*
 
 ## What it does
 
