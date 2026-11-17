@@ -83,6 +83,20 @@ rótulos são configuráveis. Cada figura pode ser baixada em PNG 300 dpi.
 CSV de cada tabela, XLSX com todas, relatório de reprodutibilidade em JSON (parâmetros, versões, hash SHA-256 dos
 dados, data e hora) e ZIP com tabelas, figuras e relatório.
 
+Os arquivos exportados são autossuficientes quanto a diagnósticos e concordância:
+
+- **`alerts`**: uma linha por alerta, com `level`, `code`, `value` (valor medido ou contagem), `threshold`
+  (limiar, quando houver) e `message_en` (mensagem em inglês). Sem alertas, a tabela vem só com o cabeçalho.
+- **`convergence`**: além das colunas por K, a linha do maior K traz `theta_shift_vs_prev_K`,
+  `area_diff_vs_prev_K`, `same_signature_vs_prev_K`, `theta_alert` e `area_alert`, que comparam com a resolução
+  anterior. Nas demais linhas essas colunas ficam vazias.
+- **`method_agreement`**: sempre criada, com ou sem referência. Uma linha por método, comparado ao ranking do
+  SARC: τ-b, Spearman, coincidência nas 1, 3 e 5 primeiras, deslocamento médio e máximo.
+- **`method_correlation` e `method_agreement`**: a primeira (e a figura g) traz a correlação de Spearman entre os
+  rankings de todos os métodos; a segunda traz a τ-b de Kendall de cada método contra o SARC.
+- No JSON, `summary.alerts` passou a ser uma lista de objetos `{level, code, value, threshold}`. A lista antiga de
+  códigos continua em `summary.alerts_codes`, e `summary.method_agreement` traz a tabela acima.
+
 ### 4.6 Interpretação por IA (opcional)
 
 Desligada por padrão. Na barra lateral, escolha o provedor, Anthropic (Claude) ou OpenAI (ChatGPT), e digite a

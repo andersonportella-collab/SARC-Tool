@@ -37,7 +37,10 @@ Aplicativo online: *URL disponível após a implantação no Streamlit Community
    maiores regiões, inclinação das posições, vetores de pesos, τ-b do LOAO, mapa de calor da correlação entre
    critérios, gráfico de teia dos perfis normalizados, mapa de calor da correlação entre métodos.
 7. **Exportação**: CSV, XLSX (todas as tabelas), relatório de reprodutibilidade em JSON (parâmetros, versões das
-   bibliotecas, hash SHA-256 dos dados, data e hora) e ZIP com tudo.
+   bibliotecas, hash SHA-256 dos dados, data e hora) e ZIP com tudo. A exportação inclui a tabela `alerts` (código,
+   valor, limiar, mensagem), as diferenças em relação à resolução anterior em `convergence` e a tabela
+   `method_agreement`, com a τ-b (e Spearman, coincidência no topo e deslocamentos) de cada método contra o SARC.
+   `method_correlation` traz a correlação de Spearman entre todos os rankings; `method_agreement` traz a τ-b contra o SARC.
 8. **Interpretação por IA (opcional)**: desligada por padrão. Só é ativada quando o usuário escolhe o provedor, Anthropic (Claude) ou OpenAI (ChatGPT), e digita a chave da
    API correspondente na barra lateral. Apenas o resumo dos resultados é enviado; a matriz só é enviada com
    consentimento explícito.

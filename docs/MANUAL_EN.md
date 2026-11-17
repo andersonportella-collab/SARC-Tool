@@ -82,6 +82,20 @@ can be downloaded as PNG 300 dpi.
 CSV for each table, XLSX with all tables, JSON reproducibility report (parameters, versions, SHA-256 data hash,
 timestamp) and a ZIP with tables, figures and report.
 
+Exported files are self-contained regarding diagnostics and agreement:
+
+- **`alerts`**: one row per alert, with `level`, `code`, `value` (measured value or count), `threshold` (when it
+  applies) and `message_en` (English message). Without alerts, the table has the header only.
+- **`convergence`**: besides the per-K columns, the row of the largest K carries `theta_shift_vs_prev_K`,
+  `area_diff_vs_prev_K`, `same_signature_vs_prev_K`, `theta_alert` and `area_alert`, which compare it with the
+  previous resolution. These columns are empty in the other rows.
+- **`method_agreement`**: always created, with or without a reference. One row per method, compared with the SARC
+  ranking: τ-b, Spearman, top 1, 3 and 5 coincidence, mean and maximum shift.
+- **`method_correlation` and `method_agreement`**: the first (and figure g) holds the Spearman correlation between
+  the rankings of all methods; the second holds Kendall's τ-b of each method against SARC.
+- In the JSON, `summary.alerts` is now a list of objects `{level, code, value, threshold}`. The previous list of
+  codes is kept in `summary.alerts_codes`, and `summary.method_agreement` holds the table above.
+
 ### 4.6 AI interpretation (optional)
 
 Off by default. In the sidebar, choose the provider, Anthropic (Claude) or OpenAI (ChatGPT), and type the key;
