@@ -1,7 +1,7 @@
 # SARC-Tool
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://python.org)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.38%2B-red)](https://streamlit.io)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.49%2B-red)](https://streamlit.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![INPI](https://img.shields.io/badge/INPI-BR%20XXXXXXXX--X-orange)]()
 

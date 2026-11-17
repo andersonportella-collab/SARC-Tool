@@ -92,7 +92,7 @@ def data_tab(lang, params):
             return None
         tag = f"up_{up.name}_{up.size}"
     with st.expander(t("preview", lang), expanded=False):
-        st.dataframe(df.head(50), use_container_width=True)
+        st.dataframe(df.head(50), width="stretch")
 
     num = _numeric_columns(df)
     if not num:
@@ -122,7 +122,7 @@ def data_tab(lang, params):
         base[t("col_max", lang)] = dio.EXAMPLE_MAX_SCORES
     base[t("col_weight", lang)] = base[t("col_weight", lang)].astype(float)
     base[t("col_max", lang)] = base[t("col_max", lang)].astype(float)
-    ed = st.data_editor(base, hide_index=True, use_container_width=True, key=f"ed_{tag}_{'|'.join(criteria)}_{lang}",
+    ed = st.data_editor(base, hide_index=True, width="stretch", key=f"ed_{tag}_{'|'.join(criteria)}_{lang}",
                         disabled=[t("col_criterion", lang)],
                         column_config={t("col_direction", lang): st.column_config.SelectboxColumn(options=[b, c], required=True),
                                        t("col_weight", lang): st.column_config.NumberColumn(min_value=0.0, format="%.4f"),
@@ -243,14 +243,14 @@ def sarc_tab(lang, setup):
     T = res["tables"]
     a1, a2, a3, a4 = st.tabs([t("ranking_tab", lang), t("regions_tab", lang), t("conv_tab", lang), t("weights_tab", lang)])
     with a1:
-        st.dataframe(_rename(T["ranking"], lang), hide_index=True, use_container_width=True)
+        st.dataframe(_rename(T["ranking"], lang), hide_index=True, width="stretch")
     with a2:
         st.caption(t("regions_note", lang))
-        st.dataframe(T["regions"], hide_index=True, use_container_width=True)
+        st.dataframe(T["regions"], hide_index=True, width="stretch")
     with a3:
-        st.dataframe(T["convergence"], hide_index=True, use_container_width=True)
+        st.dataframe(T["convergence"], hide_index=True, width="stretch")
     with a4:
-        st.dataframe(_rename(T["weights"], lang), hide_index=True, use_container_width=True)
+        st.dataframe(_rename(T["weights"], lang), hide_index=True, width="stretch")
 
 
 # ---------------------------------------------------------------- comparison tab
@@ -265,23 +265,23 @@ def comp_tab(lang, setup):
     if res.get("comparator_msgs"):
         st.warning(t("comp_msg", lang))
     st.subheader(t("ranks_all", lang))
-    st.dataframe(_rename(T["ranking"].drop(columns=["S_SARC"]), lang), hide_index=True, use_container_width=True)
+    st.dataframe(_rename(T["ranking"].drop(columns=["S_SARC"]), lang), hide_index=True, width="stretch")
     st.subheader(t("agreement", lang))
     if "agreement" in T:
         st.info(t("ref_note", lang))
         ag = T["agreement"].copy()
         ag["method"] = ag["method"].map(lambda k: ml(k, lang))
-        st.dataframe(ag, hide_index=True, use_container_width=True)
+        st.dataframe(ag, hide_index=True, width="stretch")
         st.markdown(f"**{t('largest_shifts', lang)}**")
         sh = T["largest_shifts"].copy()
         sh["method"] = sh["method"].map(lambda k: ml(k, lang))
-        st.dataframe(sh, hide_index=True, use_container_width=True)
+        st.dataframe(sh, hide_index=True, width="stretch")
     else:
         st.caption(t("agreement_none", lang))
     st.subheader(t("method_corr", lang))
     mc = T["method_correlation"].copy()
     mc["method"] = mc["method"].map(lambda k: ml(k, lang))
-    st.dataframe(_rename(mc, lang).style.format(precision=3), hide_index=True, use_container_width=True)
+    st.dataframe(_rename(mc, lang).style.format(precision=3), hide_index=True, width="stretch")
 
 
 # ---------------------------------------------------------------- diagnostics tab
@@ -310,7 +310,7 @@ def diag_tab(lang, setup):
         k[0].metric(t("cos", lang), f"{idf['cos_psi_gmd']:.4f}")
         k[1].metric(t("psi_dev", lang), f"{idf['psi_dev']:.4f}")
         k[2].metric("ρ", f"{res['runs'][res['Kmax']]['best']['rho']:.3e}")
-    st.dataframe(res["tables"].get("convergence"), hide_index=True, use_container_width=True)
+    st.dataframe(res["tables"].get("convergence"), hide_index=True, width="stretch")
 
 
 # ---------------------------------------------------------------- figures
@@ -420,7 +420,7 @@ def export_tab(lang, setup):
     st.caption(t("exp_note", lang))
     st.subheader(t("exp_tables", lang))
     name = st.selectbox(t("exp_tables", lang), list(T), label_visibility="collapsed")
-    st.dataframe(T[name], hide_index=True, use_container_width=True, height=240)
+    st.dataframe(T[name], hide_index=True, width="stretch", height=240)
     c1, c2, c3 = st.columns(3)
     c1.download_button(t("exp_csv", lang), dio.to_csv_bytes(T[name]), f"{name}.csv", "text/csv")
     c2.download_button(t("exp_xlsx", lang), dio.to_xlsx_bytes(T), "sarc_tables.xlsx",
