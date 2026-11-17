@@ -37,7 +37,10 @@ Online app: *https://sarc-tool.streamlit.app/*
    regions, slopegraph of positions, weight vectors, LOAO τ-b, criteria correlation heat map, radar chart of
    normalized profiles, method correlation heat map.
 7. **Export**: CSV, XLSX (all tables), JSON reproducibility report (parameters, library versions, SHA-256 data
-   hash, timestamp) and a ZIP with everything.
+   hash, timestamp) and a ZIP with everything. Exports include an `alerts` table (code, value, threshold, message),
+   convergence deltas against the previous resolution in `convergence`, and a `method_agreement` table with the
+   τ-b (and Spearman, top-k, shifts) of each method against SARC. `method_correlation` holds Spearman correlations
+   between all rankings; `method_agreement` holds τ-b against SARC.
 8. **Optional AI interpretation**: off by default. It turns on only when the user picks a provider, Anthropic
    (Claude) or OpenAI (ChatGPT), and types the API key in the sidebar. Only the result summary is sent; the decision matrix is sent only with explicit consent.
 
