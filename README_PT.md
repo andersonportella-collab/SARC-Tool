@@ -99,7 +99,7 @@ teste de fumaça do app.
 
 PORTELLA, A. G.; GOMES, C. F. S.; SANTOS, M. **SARC-Tool: configuração adaptativa de ranking guiada por
 estabilidade**. Software, versão 1.0.0. Universidade Federal Fluminense; Escola de Guerra Naval, 2026. Registro
-INPI: [BR XXXXXXXX-X]. Disponível em: https://github.com/andersonportella-collab/SARC-Tool.
+INPI: [BR512026010417-3]. Disponível em: https://github.com/andersonportella-collab/SARC-Tool.
 
 Artigo: em preparação (a referência será incluída após a publicação). Veja também [CITATION.cff](CITATION.cff).
 
