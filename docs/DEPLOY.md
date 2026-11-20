@@ -33,4 +33,4 @@ Checklist (https://www.gov.br/inpi/pt-br/servicos/programas-de-computador):
 - [ ] Título: SARC-Tool; data de criação: novembro de 2026; linguagem: Python
 - [ ] Resumo digital hash do código-fonte (por exemplo, SHA-512 de um ZIP do repositório na versão registrada)
 - [ ] Declaração de veracidade e GRU paga
-- [ ] Após o registro, substitua `[BR XXXXXXXX-X]` em `sarc/meta.py`, READMEs, manuais e `CITATION.cff`
+- [ ] Após o registro, substitua `[BR512026010417-3]` em `sarc/meta.py`, READMEs, manuais e `CITATION.cff`
