@@ -8,7 +8,7 @@ VERSION = __version__
 REPO_URL = "https://github.com/andersonportella-collab/SARC-Tool"
 APP_URL = "https://sarc-tool.streamlit.app/"                   
 SUPPORT_EMAIL = "andersonportella@yahoo.com.br"
-INPI = "[BR XXXXXXXX-X]"            # replace with the registration number
+INPI = "[BR512026010417-3]"            # replace with the registration number
 
 # Article citation: keep None until publication, then fill the dict below.
 ARTICLE = None
