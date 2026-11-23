@@ -115,7 +115,7 @@ docs/                  User manuals (PT, EN) and deployment guide
 ## How to cite
 
 Portella, A. G., Gomes, C. F. S., & Santos, M. (2026). *SARC-Tool: Stability-guided Adaptive Ranking
-Configuration* (Version 1.0.0) [Computer software]. INPI BR BR512026010417-3.
+Configuration* (Version 1.0.0) [Computer software]. INPI BR512026010417-3.
 https://github.com/andersonportella-collab/SARC-Tool
 
 Article: in preparation (the reference will be added after publication). See also [CITATION.cff](CITATION.cff).
